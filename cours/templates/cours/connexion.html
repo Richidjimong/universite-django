@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login_Page</title>
+
+    <style>
+
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height:100vh;
+            margin:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#131e29;
+        }
+
+        .section{
+            background:rgb(50,94,133);
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0px 10px 25px rgba(0,0,0,0.5);
+            color:white;
+            width:350px;
+            text-align:center;
+        }
+
+        h1{
+            margin-bottom:25px;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            margin-bottom:15px;
+            border-radius:6px;
+            border:none;
+        }
+
+        button{
+            background:green;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:darkgreen;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+   <div class="section">
+        <h1>Connexion</h1>
+
+        {% if message %}
+            <p style="color: red;">{{ message }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                <label>Nom d'utilisateur:</label>
+                <input type="text" name="username" required>
+            </p>
+            <p>
+                <label>Mot de passe:</label>
+                <input type="password" name="password" required>
+            </p>
+            <button type="submit">Se connecter</button>
+        </form>
+   </div>
+</body>
+</html>

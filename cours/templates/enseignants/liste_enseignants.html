@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des enseignants</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#131e29;
+        }
+
+        .section{
+            background:rgb(50, 94, 133);
+            padding:40px;
+            border-radius:12px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+        }
+
+        a{
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            background-color: green;
+            font-weight: bolder;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        a:hover{
+            background-color: darkgreen;
+        }
+
+        h1{
+            color: #fff;
+            font-family: Helvetica;
+            text-align:center;
+            margin-bottom:25px;
+        }
+
+        li{
+            list-style:none;
+            background:#f5f7fa;
+            margin-bottom:12px;
+            padding:12px 15px;
+            border-radius:8px;
+            font-size:15px;
+        }
+
+        li a{
+        margin-left:10px;
+        }
+
+        li:hover{
+            background:#e6f0ff;
+        }
+
+        .enseignants-item{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            list-style:none;
+            background:#f5f7fa;
+            margin-bottom:12px;
+            padding:12px 15px;
+            border-radius:8px;
+        }
+
+        .enseignants-item:hover{
+            background:#e6f0ff;
+        }
+
+        .actions a{
+            margin-left:10px;
+            background:green;
+            padding:6px 12px;
+            border-radius:6px;
+            color:white;
+            text-decoration:none;
+            font-size:13px;
+        }
+
+        .actions a:last-child{
+            background:red;
+        }
+
+        .actions a:hover{
+            opacity:0.8;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+    <div class="section">
+
+        <h1>Liste des enseignants</h1>
+        <a href="{% url 'ajouter_enseignants' %}">Ajouter un enseignant</a>
+        
+        <ul>
+            {% for enseignant in enseignants %}
+
+                <li class="enseignants_item">
+                    <div class="enseignants-info">
+                        <strong>{{ enseignant.nom }}</strong> - {{ enseignant.specialite }}
+                    </div>
+
+                    <div class="actions">
+                        <a href="{% url 'modifier_enseignants' enseignant.id %}">Modifier</a>
+                        <a href="{% url 'supprimer_enseignants' enseignant.id %}">Supprimer</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+</body>
+</html>

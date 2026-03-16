@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil sur l'application</title>
+
+    <style>
+
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height:100vh;
+            margin:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#131e29;
+        }
+
+        .section{
+            color:white;
+            text-align:center;
+            background:rgb(50,94,133);
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0px 10px 25px rgba(0,0,0,0.5);
+        }
+
+        h1{
+            color:white;
+            margin-bottom:25px;
+        }
+
+        p{
+            margin-bottom:15px;
+        }
+
+        a{
+            display:inline-block;
+            color:white;
+            text-decoration:none;
+            background-color:green;
+            font-weight:bold;
+            padding:10px 20px;
+            margin-top:10px;
+            border-radius:8px;
+        }
+
+        a:hover{
+            background-color:darkgreen;
+        }
+
+        .btn_barre{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="section">
+
+        <h1>Bienvenue sur l'application de l'Universite</h1>
+
+        {% if user.is_authenticated %}
+            <div class="btn_barre">
+
+                <p>Bonjour {{ user.username }}! Vous etes connecter</p>
+
+                <a href="{% url 'liste_cours' %}">Liste des cours</a>
+                <a href="{% url 'deconnexion_utilisateur' %}">Se deconnecter</a>
+
+            </div>
+
+        {% else %}
+            <p>Vous n'etes pas connecté.</p>
+            <a href="{% url 'connexion_utilisateur' %}">Se connecter</a>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

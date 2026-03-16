@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Cours</title>
+
+    <style>
+
+        body{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height:100vh;
+            margin:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#131e29;
+        }
+
+        .section{
+            color:white;
+            text-align:center;
+            background:rgb(50,94,133);
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0px 10px 25px rgba(0,0,0,0.5);
+            width:400px;
+        }
+
+        h1{
+            margin-bottom:25px;
+        }
+
+        input, select{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            margin-bottom:15px;
+            border-radius:6px;
+            border:none;
+        }
+
+        .btn{
+            background:green;
+            color:white;
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        .btn:hover{
+            background:darkgreen;
+        }
+
+        .back{
+            display:inline-block;
+            background:blue;
+            color:white;
+            padding:10px 20px;
+            border-radius:8px;
+            text-decoration:none;
+        }
+
+        .back:hover{
+            background:darkblue;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="section">
+
+        <h1>Modifier Cours</h1>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type="submit">Valider Modification</button>
+        </form>
+        <br>
+
+        <a href="{% url 'liste_cours' %}" class="back">Retour a la liste des cours</a>
+
+    </div>
+
+</body>
+</html>

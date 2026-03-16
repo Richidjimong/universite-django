@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des cours</title>
+
+    <style>
+
+        body{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height:100vh;
+            margin:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#131e29;
+        }
+
+        .section{
+            background:rgb(50,94,133);
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0px 10px 25px rgba(0,0,0,0.5);
+            width:500px;
+            color:white;
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        a{
+            display:inline-block;
+            color:white;
+            text-decoration:none;
+            background:green;
+            padding:8px 15px;
+            border-radius:6px;
+            margin-right:10px;
+        }
+
+        a:hover{
+            background:darkgreen;
+        }
+
+        ul{
+            padding:0;
+            margin-top:20px;
+        }
+
+        .cours_item{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            list-style:none;
+            background:#f5f7fa;
+            color:black;
+            margin-bottom:12px;
+            padding:12px 15px;
+            border-radius:8px;
+        }
+
+        .actions a{
+            margin-left:10px;
+            padding:6px 12px;
+            font-size:13px;
+        }
+
+        .actions a:last-child{
+            background:red;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="section">
+
+        <h1>Liste des cours</h1>
+        <p>Profil : {{ user.username }}</p>
+
+        <a href="{% url 'ajouter_cours' %}">Ajouter un Cours</a>
+        <a href="{% url 'deconnexion_utilisateur' %}">Se déconnecter</a>
+
+        <ul>
+            {% for c in cours %}
+                <li class="cours_item">
+                    <div class="cours-info">
+                        {{ c.titre }} - {{ c.enseignant.nom }} - Credits: {{ c.credit }}
+                    </div>
+
+                    <div class="actions">
+                        <a href="{% url 'modifier_cours' c.id %}">Modifier</a>
+                        <a href="{% url 'supprimer_cours' c.id %}">Supprimer</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</body>
+</html>

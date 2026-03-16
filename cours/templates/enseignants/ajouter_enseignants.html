@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter Cours</title>
+
+    <style>
+
+        body{
+            font-family: Helvetica;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color: #fff;
+            background:#131e29;
+        }
+
+        .section{
+            color: #fff;
+            text-align: center;
+            background:rgb(50, 94, 133);
+            padding:40px;
+            border-radius:12px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+        }
+
+        h1{
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            text-align:center;
+            margin-bottom:25px;
+            font-size: bolder;
+        }
+
+        .btn{
+            display:inline-block;
+            color: #fff;
+            text-decoration: none;
+            background-color: green;
+            font-weight: bolder;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        a:hover{
+            background-color: darkgreen;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="secttion">
+
+        <h1>Ajouter un enseignant</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type="submit">Ajouter</button>
+        </form>
+
+    </div>
+    
+</body>
+</html>
