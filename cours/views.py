@@ -122,4 +122,3 @@ def connexion_utilisateur(request):
 def deconnexion_utilisateur(request):
     logout(request)
     return redirect('connexion_utilisateur')
-
